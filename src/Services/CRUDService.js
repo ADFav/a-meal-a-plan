@@ -22,3 +22,6 @@ export function listen(query) {
 
     return null;
 }
+
+const CRUDService = { read, del, update, create, listen };
+export default CRUDService
