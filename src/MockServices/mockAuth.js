@@ -24,9 +24,11 @@ export function getAuthState() {
     return { loggedIn, userData };
 }
 
+export const authState = { loggedIn, userData };
+
 export function getUserData() {
     return userData;
 }
 
-const mockAuth = { login, logout, getAuthState, getUserData };
+const mockAuth = { login, logout, getAuthState, authState, getUserData };
 export default mockAuth;
