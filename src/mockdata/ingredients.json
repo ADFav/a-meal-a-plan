@@ -2,168 +2,168 @@
         "id": "a1",
         "recipeId": "a",
         "originalText": "20 grams gim, often labeled as roasted seaweed",
-        "Amount": "20",
-        "Unit": "grams",
-        "Ingredient": "gim"
+        "amount": "20",
+        "unit": "grams",
+        "ingredient": "gim"
     },
     {
         "id": "a2",
         "recipeId": "a",
         "originalText": "2   (4-inch) squares dasima or kombu (dried kelp)",
-        "Amount": "2",
-        "Unit": "squares",
-        "Ingredient": "dasima or kombu"
+        "amount": "2",
+        "unit": "squares",
+        "ingredient": "dasima or kombu"
     },
     {
         "id": "a3",
         "recipeId": "a",
         "originalText": "1   tablespoon kosher salt",
-        "Amount": "1",
-        "Unit": "tablespoon",
-        "Ingredient": "kosher salt"
+        "amount": "1",
+        "unit": "tablespoon",
+        "ingredient": "kosher salt"
     },
     {
         "id": "a4",
         "recipeId": "a",
         "originalText": "1   pound rigatoni",
-        "Amount": "1",
-        "Unit": "pound",
-        "Ingredient": "rigatoni"
+        "amount": "1",
+        "unit": "pound",
+        "ingredient": "rigatoni"
     },
     {
         "id": "a5",
         "recipeId": "a",
         "originalText": "1 ½   cups heavy cream",
-        "Amount": "1.5",
-        "Unit": "cups",
-        "Ingredient": "heavy cream"
+        "amount": "1.5",
+        "unit": "cups",
+        "ingredient": "heavy cream"
     },
     {
         "id": "a6",
         "recipeId": "a",
         "originalText": "1   small red onion, halved and thinly sliced",
-        "Amount": "1",
-        "Ingredient": "red onion",
-        "Size": "small",
-        "Preparation": "halved and thinly sliced"
+        "amount": "1",
+        "ingredient": "red onion",
+        "size": "small",
+        "preparation": "halved and thinly sliced"
     },
     {
         "id": "a7",
         "recipeId": "a",
         "originalText": "2   large garlic cloves, finely grated",
-        "Amount": "2",
-        "Unit": "cloves",
-        "Ingredient": "garlic",
-        "Size": "large",
-        "Preparation": "finely grated"
+        "amount": "2",
+        "unit": "cloves",
+        "ingredient": "garlic",
+        "size": "large",
+        "preparation": "finely grated"
     },
     {
         "id": "a8",
         "recipeId": "a",
         "originalText": "1   teaspoon freshly ground black pepper, plus more to taste",
-        "Amount": "1",
-        "Unit": "teaspoon",
-        "Ingredient": "black pepper",
-        "Preparation": "freshly ground"
+        "amount": "1",
+        "unit": "teaspoon",
+        "ingredient": "black pepper",
+        "preparation": "freshly ground"
     },
     {
         "id": "a9",
         "recipeId": "a",
         "originalText": "1   teaspoon rice vinegar",
-        "Amount": "1",
-        "Unit": "teaspoon",
-        "Ingredient": "rice vingear"
+        "amount": "1",
+        "unit": "teaspoon",
+        "ingredient": "rice vingear"
     },
     {
         "id": "a10",
         "recipeId": "a",
         "originalText": "½   pound asparagus, thinly sliced at an angle",
-        "Amount": "1.5",
-        "Unit": "pound",
-        "Ingredient": "asparagus",
-        "Preparation": "thinly sliced at an angle"
+        "amount": "1.5",
+        "unit": "pound",
+        "ingredient": "asparagus",
+        "preparation": "thinly sliced at an angle"
     },
     {
         "id": "a11",
         "recipeId": "a",
         "originalText": "1   tablespoon toasted sesame oil",
-        "Amount": "1",
-        "Unit": "tablespoon",
-        "Ingredient": "sesame oil",
-        "Preparation": "toasted"
+        "amount": "1",
+        "unit": "tablespoon",
+        "ingredient": "sesame oil",
+        "preparation": "toasted"
     },
     {
         "id": "a12",
         "recipeId": "a",
         "originalText": "Flaky sea salt, for serving",
-        "Ingredient": "sea salt",
-        "Size": "Flaky"
+        "ingredient": "sea salt",
+        "size": "Flaky"
     },
-    { "id": "b1", "recipeId": "b", "originalText": "Salt", "Ingredient": "Salt" },
+    { "id": "b1", "recipeId": "b", "originalText": "Salt", "ingredient": "Salt" },
     {
         "id": "b2",
         "recipeId": "b",
         "originalText": "3   cups Chinese broccoli, broccolini or broccoli (about 12 ounces), sliced in 1 1/2-inch pieces on the bias",
-        "Amount": "3",
-        "Unit": "cups",
-        "Ingredient": "Chinese broccoli",
-        "Preparation": "sliced in 1 1/2-inch pieces on the bias"
+        "amount": "3",
+        "unit": "cups",
+        "ingredient": "Chinese broccoli",
+        "preparation": "sliced in 1 1/2-inch pieces on the bias"
     },
     {
         "id": "b3",
         "recipeId": "b",
         "originalText": "6   tablespoons pork fat, preferably rendered from pork belly; or bacon fat, preferably from unsmoked bacon",
-        "Amount": "6",
-        "Unit": "tablespoons",
-        "Ingredient": "pork fat",
-        "Preparation": "preferably rendered from pork belly"
+        "amount": "6",
+        "unit": "tablespoons",
+        "ingredient": "pork fat",
+        "preparation": "preferably rendered from pork belly"
     },
     {
         "id": "b4",
         "recipeId": "b",
         "originalText": "3   tablespoons thinly sliced garlic (about 4 to 6 cloves)",
-        "Amount": "3",
-        "Unit": "tablespoons",
-        "Ingredient": "garlic",
-        "Preparation": "thinly sliced"
+        "amount": "3",
+        "unit": "tablespoons",
+        "ingredient": "garlic",
+        "preparation": "thinly sliced"
     },
     {
         "id": "b5",
         "recipeId": "b",
         "originalText": "3   tablespoons Asian fish sauce",
-        "Amount": "3",
-        "Unit": "tablespoons",
-        "Ingredient": "Asian fish sauce"
+        "amount": "3",
+        "unit": "tablespoons",
+        "ingredient": "Asian fish sauce"
     },
     {
         "id": "b6",
         "recipeId": "b",
         "originalText": "1   pound bucatini",
-        "Amount": "1",
-        "Unit": "pound",
-        "Ingredient": "bucatini"
+        "amount": "1",
+        "unit": "pound",
+        "ingredient": "bucatini"
     },
     {
         "id": "b7",
         "recipeId": "b",
         "originalText": "½   tablespoon Chinese chile oil, or to taste",
-        "Amount": "0.5",
-        "Unit": "tablespoon",
-        "Ingredient": "Chinese chile oil"
+        "amount": "0.5",
+        "unit": "tablespoon",
+        "ingredient": "Chinese chile oil"
     },
     {
         "id": "b8",
         "recipeId": "b",
         "originalText": "Ground black pepper",
-        "Ingredient": "black pepper",
-        "Preparation": "Ground"
+        "ingredient": "black pepper",
+        "preparation": "Ground"
     },
     {
         "id": "b9",
         "recipeId": "b",
         "originalText": "2   tablespoons Chinese sesame oil",
-        "Amount": "2",
-        "Unit": "tablespoons",
-        "Ingredient": "Chinese sesame oil"
+        "amount": "2",
+        "unit": "tablespoons",
+        "ingredient": "Chinese sesame oil"
     }
 ]
