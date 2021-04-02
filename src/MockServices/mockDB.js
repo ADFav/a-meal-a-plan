@@ -3,7 +3,7 @@ const tables = {
     recipes: require('../mockdata/recipes')
 }
 
-const lag = () => 3000 * (2 * Math.random() - 1) * 1000
+const lag = () => 2000 + (2 * Math.random() - 1) * 1000
 const returnWithLag = value => new Promise((resolve, reject) => {
     setTimeout(() => resolve(value), lag())
 });

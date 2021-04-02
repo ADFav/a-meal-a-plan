@@ -1,41 +1,56 @@
 import { Component } from "react";
 import Navbar from "../../Components/Navbar";
+import { CRUDContext } from "../../Services/CRUDService";
+import Query from "../../Services/Query";
 import IngredientList from "./IngredientList";
 
-const mockRecipes = require("../../mockdata/recipes");
-const mockIngredients = require("../../mockdata/ingredients");
+const mockRecipes = require("../../mockdata/recipes.json");
 
 export default class Recipe extends Component {
-  constructor(props = { r: "z" }) {
+  static defaultProps = { recipe: mockRecipes[0] };
+  static contextType = CRUDContext;
+  constructor(props) {
     super(props);
-    const { recipe = mockRecipes[0] } = props;
-    this.getIngredients(recipe.id);
-    this.state = { ingredients: [], steps: [] };
+    this.state = { ingredients: null, steps: [] };
+
+    ["setIngredients", "getIngredients"].forEach((handlerName) => {
+      this[handlerName] = this[handlerName].bind(this);
+    });
   }
 
-  getIngredients(recipeId) {
-    setTimeout(() => {
-      const ingredients = mockIngredients.filter(
-        (ingredient) => ingredient.recipeId === recipeId
-      );
-      this.setState({ ingredients });
-    }, 3000);
+  async componentDidMount() {
+    await this.getIngredients();
   }
+
+  setIngredients(ingredients) {
+    this.setState({ ingredients });
+  }
+
+  async getIngredients() {
+    const { read } = this.context;
+    const query = this.ingredientsQuery;
+    const ingredients = await read(query);
+    this.setIngredients(ingredients);
+  }
+
+  ingredientsQuery = {
+    table: "ingredients",
+    filters: [["recipeId", "==", this.props.recipe.id]],
+  };
 
   ingredientList() {
-    if (this.state.ingredients.length > 0) {
-      return (
-        <IngredientList
-          ingredients={this.state.ingredients}
-          annotations={this.props.annotations}
-        />
-      );
-    }
-    return <div>LOADING</div>;
+    return this.state.ingredients != null ? (
+      <IngredientList
+        ingredients={this.state.ingredients}
+        annotations={this.props.annotations}
+      />
+    ) : (
+      <div>LOADING</div>
+    );
   }
 
   render() {
-    const { recipe = mockRecipes[0] } = this.props;
+    const { recipe } = this.props;
     const { title, imageUrl, url, id } = recipe;
     const altText = `Photo of ${title}`;
     return (
