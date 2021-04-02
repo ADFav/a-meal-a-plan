@@ -1,11 +1,11 @@
 import { Switch, Route } from "react-router-dom";
-import { LogIn } from "../Components/Login";
+import Login from "../Components/Login";
 
-export function loggedOut(props) {
+export default function LoggedOut(props) {
   return (
     <Switch>
       <Route path="*">
-        <LogIn />
+        <Login />
       </Route>
     </Switch>
   );
