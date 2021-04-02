@@ -14,6 +14,9 @@
 #secrets
 /src/secrets
 
+#previews
+/previews
+
 # misc
 .DS_Store
 .env.local
