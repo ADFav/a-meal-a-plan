@@ -1,11 +1,15 @@
 import { Switch, Route } from "react-router-dom";
-import Login from "../Components/Login";
+import LogIn from "../Routes/LogIn";
+import SignUp from "../Routes/SignUp";
 
-export default function LoggedOut(props) {
+export default function LoggedOut() {
   return (
     <Switch>
+      <Route path="/signup">
+        <SignUp />
+      </Route>
       <Route path="*">
-        <Login />
+        <LogIn />
       </Route>
     </Switch>
   );
