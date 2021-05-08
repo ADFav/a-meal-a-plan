@@ -11,8 +11,14 @@ export default function LogIn() {
   };
   const loginClickHandler = async () => {
     setLoading(true);
-    await backend.AuthConnection.logIn(loginParams);
-    setLoading(false);
+    const loginResponse = await backend.AuthConnection.logIn(loginParams);
+    if (loginResponse.error) {
+      console.error(loginResponse);
+      setLoading(false);
+    } else {
+      //TODO: redirect mealplans, I guess?
+      setLoading(false);
+    }
   };
 
   return (
