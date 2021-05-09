@@ -12,41 +12,51 @@ class AuthConnection {
   }
 
   async currentUser() {
-    if (this.user !== null) return this.user;
+    const response = { user: this.user, error: null };
+    if (this.user !== null) return response;
     try {
       this.user = this.Auth.currentUserInfo();
-      return { user: this.user };
+      response.user = this.user;
     } catch (error) {
       console.error(error);
-      return { error };
+      response.error = error;
+    } finally {
+      return response;
     }
   }
 
   async signUp(username, password) {
+    const response = { user: null, error: null };
     try {
       this.user = await this.Auth.signUp({ username, password });
-      return { user: this.user };
+      response.user = this.user;
     } catch (error) {
       console.error(error);
-      return { error: error };
+      response.error = error;
+    } finally {
+      return response;
     }
   }
 
   async signIn(username, password) {
+    const response = { user: null, error: null };
     try {
-      this.user = await this.Auth.signIn({ username, password });
-      return { user: this.user };
+      console.log(username, password);
+      this.user = await this.Auth.signIn(username, password);
+      response.user = this.user;
     } catch (error) {
       console.error(error);
-      return { error: error };
+      response.error = error;
+    } finally {
+      return response;
     }
   }
 
   async signOut() {
     try {
-      const result = await this.Auth.signOut();
+      await this.Auth.signOut();
       this.user = null;
-      return { success: true };
+      return { success: true, error: null };
     } catch (error) {
       console.error(error);
       return { success: false, error: error };
