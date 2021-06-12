@@ -1,17 +1,21 @@
 import { useContext, useState } from "react";
-import { backendConnection } from "../Services/backendConnection";
+import backendConnection from "../Services/backendConnection";
 
 export default function LogIn() {
-  const backend = useContext(backendConnection);
+  const Auth = useContext(backendConnection).Auth;
   const loginParams = { username: "", password: "" };
   const [isLoading, setLoading] = useState(false);
 
   const blurHandler = (fieldName) => (blurEvent) => {
     loginParams[fieldName] = blurEvent.target.value;
   };
+
   const loginClickHandler = async () => {
     setLoading(true);
-    const loginResponse = await backend.AuthConnection.logIn(loginParams);
+    const loginResponse = await Auth.signIn(
+      loginParams.username,
+      loginParams.password
+    );
     if (loginResponse.error) {
       console.error(loginResponse);
       setLoading(false);
@@ -31,7 +35,7 @@ export default function LogIn() {
       <input
         type="password"
         placeholder="hunter2"
-        onBlur={blurHandler("passwowrd")}
+        onBlur={blurHandler("password")}
       />
       <button disabled={isLoading} onClick={loginClickHandler}>
         Log In
