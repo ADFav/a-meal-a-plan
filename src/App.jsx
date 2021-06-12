@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
+import Router from "./Routers/router";
 
 function App() {
-  return <div>Welcome to the show!</div>;
+  return <Router isLoggedIn={true} />;
 }
 
 export default App;
