@@ -3,7 +3,6 @@ import LoggedIn from "./loggedIn";
 import LoggedOut from "./loggedOut";
 
 export default function Router(props) {
-  const loggedIn = props.AuthConnection.user !== null;
-  const router = loggedIn ? <LoggedIn /> : <LoggedOut />;
+  const router = props.loggedIn ? <LoggedIn /> : <LoggedOut />;
   return <BrowserRouter>{router}</BrowserRouter>;
 }
