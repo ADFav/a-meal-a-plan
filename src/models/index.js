@@ -2,21 +2,22 @@
 import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
-const MealType = {
-  "BREAKFAST": "BREAKFAST",
-  "LUNCH": "LUNCH",
-  "DINNER": "DINNER",
-  "SNACKS": "SNACKS",
-  "DESSERTS": "DESSERTS",
-  "MISC": "MISC"
+const IngredientAttributeTypes = {
+  "QUANTITY": "QUANTITY",
+  "UNIT": "UNIT",
+  "FOODSTUFF": "FOODSTUFF",
+  "PREPARATION": "PREPARATION",
+  "SIZE": "SIZE",
+  "COLOR": "COLOR",
+  "PARANTHETICAL": "PARANTHETICAL"
 };
 
-const { Meal, Recipe, Ingredient, MealPlan } = initSchema(schema);
+const { RecipeTag, Recipe, Ingredient, Foodstuff } = initSchema(schema);
 
 export {
-  Meal,
+  RecipeTag,
   Recipe,
   Ingredient,
-  MealPlan,
-  MealType
+  Foodstuff,
+  IngredientAttributeTypes
 };

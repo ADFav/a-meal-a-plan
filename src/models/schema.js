@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Meal": {
-            "name": "Meal",
+        "RecipeTag": {
+            "name": "RecipeTag",
             "fields": {
                 "id": {
                     "name": "id",
@@ -10,45 +10,30 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "mealplanID": {
-                    "name": "mealplanID",
+                "recipeID": {
+                    "name": "recipeID",
                     "isArray": false,
                     "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "value": {
+                    "name": "value",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "Recipe": {
-                    "name": "Recipe",
+                "color": {
+                    "name": "color",
                     "isArray": false,
-                    "type": {
-                        "model": "Recipe"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "mealRecipeId"
-                    }
-                },
-                "type": {
-                    "name": "type",
-                    "isArray": false,
-                    "type": {
-                        "enum": "MealType"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "date": {
-                    "name": "date",
-                    "isArray": false,
-                    "type": "AWSDate",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 }
             },
             "syncable": true,
-            "pluralName": "Meals",
+            "pluralName": "RecipeTags",
             "attributes": [
                 {
                     "type": "model",
@@ -57,9 +42,9 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byMealPlan",
+                        "name": "byRecipe",
                         "fields": [
-                            "mealplanID"
+                            "recipeID"
                         ]
                     }
                 },
@@ -68,20 +53,23 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
+                                "allow": "private",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
                                 "provider": "userPools",
                                 "ownerField": "owner",
                                 "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
-                                    "read",
                                     "create",
                                     "update",
-                                    "delete"
-                                ],
-                                "identityClaim": "cognito:username"
-                            },
-                            {
-                                "allow": "private",
-                                "operations": [
+                                    "delete",
                                     "read"
                                 ]
                             }
@@ -100,6 +88,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "title": {
+                    "name": "title",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "Ingredients": {
                     "name": "Ingredients",
                     "isArray": true,
@@ -114,22 +109,29 @@ export const schema = {
                         "associatedWith": "recipeID"
                     }
                 },
-                "title": {
-                    "name": "title",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "imageURL": {
-                    "name": "imageURL",
+                "originalURL": {
+                    "name": "originalURL",
                     "isArray": false,
                     "type": "AWSURL",
                     "isRequired": false,
                     "attributes": []
                 },
-                "originalURL": {
-                    "name": "originalURL",
+                "RecipeTags": {
+                    "name": "RecipeTags",
+                    "isArray": true,
+                    "type": {
+                        "model": "RecipeTag"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "recipeID"
+                    }
+                },
+                "photo": {
+                    "name": "photo",
                     "isArray": false,
                     "type": "AWSURL",
                     "isRequired": false,
@@ -148,7 +150,10 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "private",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -171,12 +176,32 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "recipeID": {
+                    "name": "recipeID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "originalText": {
                     "name": "originalText",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
+                },
+                "Foodstuff": {
+                    "name": "Foodstuff",
+                    "isArray": false,
+                    "type": {
+                        "model": "Foodstuff"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "ingredientFoodstuffId"
+                    }
                 },
                 "quantity": {
                     "name": "quantity",
@@ -187,34 +212,6 @@ export const schema = {
                 },
                 "unit": {
                     "name": "unit",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "preparation": {
-                    "name": "preparation",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "recipeID": {
-                    "name": "recipeID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "aisle": {
-                    "name": "aisle",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "ingredientName": {
-                    "name": "ingredientName",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -242,7 +239,10 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "private",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -255,8 +255,8 @@ export const schema = {
                 }
             ]
         },
-        "MealPlan": {
-            "name": "MealPlan",
+        "Foodstuff": {
+            "name": "Foodstuff",
             "fields": {
                 "id": {
                     "name": "id",
@@ -265,37 +265,23 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "startDate": {
-                    "name": "startDate",
+                "name": {
+                    "name": "name",
                     "isArray": false,
-                    "type": "AWSDate",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "endDate": {
-                    "name": "endDate",
+                "aisle": {
+                    "name": "aisle",
                     "isArray": false,
-                    "type": "AWSDate",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
-                },
-                "Meals": {
-                    "name": "Meals",
-                    "isArray": true,
-                    "type": {
-                        "model": "Meal"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "mealplanID"
-                    }
                 }
             },
             "syncable": true,
-            "pluralName": "MealPlans",
+            "pluralName": "Foodstuffs",
             "attributes": [
                 {
                     "type": "model",
@@ -321,18 +307,19 @@ export const schema = {
         }
     },
     "enums": {
-        "MealType": {
-            "name": "MealType",
+        "IngredientAttributeTypes": {
+            "name": "IngredientAttributeTypes",
             "values": [
-                "BREAKFAST",
-                "LUNCH",
-                "DINNER",
-                "SNACKS",
-                "DESSERTS",
-                "MISC"
+                "QUANTITY",
+                "UNIT",
+                "FOODSTUFF",
+                "PREPARATION",
+                "SIZE",
+                "COLOR",
+                "PARANTHETICAL"
             ]
         }
     },
     "nonModels": {},
-    "version": "3756095077fa1b8498763935542da5af"
+    "version": "91948b7e7531a8a87244c86d557b6a26"
 };

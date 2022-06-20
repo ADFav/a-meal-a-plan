@@ -1,54 +1,52 @@
 import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
 
-export enum MealType {
-  BREAKFAST = "BREAKFAST",
-  LUNCH = "LUNCH",
-  DINNER = "DINNER",
-  SNACKS = "SNACKS",
-  DESSERTS = "DESSERTS",
-  MISC = "MISC"
+export enum IngredientAttributeTypes {
+  QUANTITY = "QUANTITY",
+  UNIT = "UNIT",
+  FOODSTUFF = "FOODSTUFF",
+  PREPARATION = "PREPARATION",
+  SIZE = "SIZE",
+  COLOR = "COLOR",
+  PARANTHETICAL = "PARANTHETICAL"
 }
 
 
 
-export declare class Meal {
+export declare class RecipeTag {
   readonly id: string;
-  readonly mealplanID?: string;
-  readonly Recipe?: Recipe;
-  readonly type?: MealType | keyof typeof MealType;
-  readonly date?: string;
-  constructor(init: ModelInit<Meal>);
-  static copyOf(source: Meal, mutator: (draft: MutableModel<Meal>) => MutableModel<Meal> | void): Meal;
+  readonly recipeID: string;
+  readonly value?: string | null;
+  readonly color?: string | null;
+  constructor(init: ModelInit<RecipeTag>);
+  static copyOf(source: RecipeTag, mutator: (draft: MutableModel<RecipeTag>) => MutableModel<RecipeTag> | void): RecipeTag;
 }
 
 export declare class Recipe {
   readonly id: string;
-  readonly Ingredients?: (Ingredient | null)[];
-  readonly title: string;
-  readonly imageURL?: string;
-  readonly originalURL?: string;
+  readonly title?: string | null;
+  readonly Ingredients?: (Ingredient | null)[] | null;
+  readonly originalURL?: string | null;
+  readonly RecipeTags?: (RecipeTag | null)[] | null;
+  readonly photo?: string | null;
   constructor(init: ModelInit<Recipe>);
   static copyOf(source: Recipe, mutator: (draft: MutableModel<Recipe>) => MutableModel<Recipe> | void): Recipe;
 }
 
 export declare class Ingredient {
   readonly id: string;
-  readonly originalText: string;
-  readonly quantity?: number;
-  readonly unit?: string;
-  readonly preparation?: string;
-  readonly recipeID?: string;
-  readonly aisle?: string;
-  readonly ingredientName?: string;
+  readonly recipeID: string;
+  readonly originalText?: string | null;
+  readonly Foodstuff?: Foodstuff | null;
+  readonly quantity?: number | null;
+  readonly unit?: string | null;
   constructor(init: ModelInit<Ingredient>);
   static copyOf(source: Ingredient, mutator: (draft: MutableModel<Ingredient>) => MutableModel<Ingredient> | void): Ingredient;
 }
 
-export declare class MealPlan {
+export declare class Foodstuff {
   readonly id: string;
-  readonly startDate?: string;
-  readonly endDate?: string;
-  readonly Meals?: (Meal | null)[];
-  constructor(init: ModelInit<MealPlan>);
-  static copyOf(source: MealPlan, mutator: (draft: MutableModel<MealPlan>) => MutableModel<MealPlan> | void): MealPlan;
+  readonly name?: string | null;
+  readonly aisle?: string | null;
+  constructor(init: ModelInit<Foodstuff>);
+  static copyOf(source: Foodstuff, mutator: (draft: MutableModel<Foodstuff>) => MutableModel<Foodstuff> | void): Foodstuff;
 }

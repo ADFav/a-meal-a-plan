@@ -10,11 +10,6 @@
       "StackName": "amplify-amealaplan-staging-233756",
       "StackId": "arn:aws:cloudformation:us-east-1:555221742828:stack/amplify-amealaplan-staging-233756/a43d6960-81f9-11eb-9fbe-0a2f4587a347",
       "AmplifyAppId": "d3es3t0sa9ip4d"
-    },
-    "categories": {
-      "auth": {
-        "amealaplan": {}
-      }
     }
   }
 }
